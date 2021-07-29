@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="image" id="img-container"></div>
     <h1 id="image"></h1>
     <h1 id="firstName"></h1>
     <h1 id="lastName"></h1>
@@ -17,6 +18,11 @@
     function promiseCallApi(){
         axios.get('https://reqres.in/api/users/5').then(res => {
             console.log(`res ==>`,res.data)
+            
+            let img = document.createElement('img');
+            img.src = res.data.data.avatar;
+            document.getElementById('img-container').appendChild(img);
+
             document.getElementById('firstName').innerText = res.data.data.first_name
             document.getElementById('lastName').innerText = res.data.data.last_name
             document.getElementById('email').innerText = res.data.data.email
@@ -27,11 +33,20 @@
     //promiseCallApi()
 
     async function awaitApi(){
-        let response = await axios.get('https://reqres.in/api/users/5');
-        console.log(`response ==>`,response.data)
-        document.getElementById('firstName').innerText = response.data.data.first_name
-        document.getElementById('lastName').innerText = response.data.data.last_name
-        document.getElementById('email').innerText = response.data.data.email
+        try {
+            let response = await axios.get('https://reqres.in/api/users/5');
+            console.log(`response ==>`,response.data)
+
+            let img = document.createElement('img');
+            img.src = response.data.data.avatar;
+            document.getElementById('img-container').appendChild(img);
+
+            document.getElementById('firstName').innerText = response.data.data.first_name
+            document.getElementById('lastName').innerText = response.data.data.last_name
+            document.getElementById('email').innerText = response.data.data.email
+        }catch(error) {
+            console.log(`error ==>`,err);    
+        }
     }
 
     awaitApi()
