@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="image" id="img-container"></div>
-    <h1 id="image"></h1>
-    <h1 id="firstName"></h1>
-    <h1 id="lastName"></h1>
-    <p id="email"></p>
+    <div class="container">
+         <div class="image" id="img-container"></div>
+        <h1 id="image"></h1>
+        <h1 id="firstName"></h1>
+        <h1 id="lastName"></h1>
+        <p id="email"></p>
+    </div>
+   
 </body>
 <script>
     function promiseCallApi(){
@@ -30,7 +34,7 @@
             console.log(`error`,err);
         })
     }
-    //promiseCallApi()
+    promiseCallApi()
 
     async function awaitApi(){
         try {
@@ -49,7 +53,7 @@
         }
     }
 
-    awaitApi()
+    //awaitApi()
     
 </script>
 </html>

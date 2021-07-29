@@ -1,0 +1,15 @@
+h1 {
+    display: inline;
+    margin-right: 10px;
+}
+p {
+    margin: 10px;
+}
+img {
+    border-radius: 50%;
+
+}
+.container {
+    text-align: center;
+    margin-top: 10%;
+}
