@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="image"></h1>
+    <h1 id="firstName"></h1>
+    <h1 id="lastName"></h1>
+    <p id="email"></p>
+</body>
+<script>
+    function promiseCallApi(){
+        axios.get('https://reqres.in/api/users/5').then(res => {
+            console.log(`res ==>`,res.data)
+            document.getElementById('firstName').innerText = res.data.data.first_name
+            document.getElementById('lastName').innerText = res.data.data.last_name
+            document.getElementById('email').innerText = res.data.data.email
+        }).catch(err => {
+            console.log(`error`,err);
+        })
+    }
+    //promiseCallApi()
+
+    async function awaitApi(){
+        let response = await axios.get('https://reqres.in/api/users/5');
+        console.log(`response ==>`,response.data)
+        document.getElementById('firstName').innerText = response.data.data.first_name
+        document.getElementById('lastName').innerText = response.data.data.last_name
+        document.getElementById('email').innerText = response.data.data.email
+    }
+
+    awaitApi()
+    
+</script>
+</html>
